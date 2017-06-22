@@ -4,7 +4,7 @@ from flask import Flask, Response, jsonify, render_template, request
 import gevent
 from gevent.wsgi import WSGIServer
 from gevent.queue import Queue
-#from urllib.parse import unquote
+from urllib.parse import unquote
 
 app = Flask(__name__)
 subscriptions = []
