@@ -4,7 +4,7 @@ from flask import Flask, Response, jsonify, render_template, request
 import gevent
 from gevent.wsgi import WSGIServer
 from gevent.queue import Queue
-from urllib.parse import unquote
+#from urllib.parse import unquote
 
 app = Flask(__name__)
 subscriptions = []
@@ -40,8 +40,8 @@ class ServerSentEvent(object):
 @app.route("/publish/epoch/end/", methods=['POST'])
 def publish():
     #payload = request.form.get('data')
-    #payload = unquote(request.data.split('=')[1]).replace('+','')
-	payload = unquote(request.data.decode("utf-8").split('=')[1]).replace('+','')
+    payload = unquote(request.data.split('=')[1]).replace('+','')
+	#payload = unquote(request.data.decode("utf-8").split('=')[1]).replace('+','')
     try:
         data = json.loads(payload)
     except:
