@@ -40,12 +40,7 @@ class ServerSentEvent(object):
 @app.route("/publish/epoch/end/", methods=['POST'])
 def publish():
     #payload = request.form.get('data')
-    try:
-        payload = unquote(request.data.split('=')[1]).replace('+','')
-    except:
-        print("failed publish")
-        print("request.data %s" % request.data)
-	#payload = unquote(request.data.decode("utf-8").split('=')[1]).replace('+','')
+    payload = unquote(request.data.split('=')[1]).replace('+','')
     try:
         data = json.loads(payload)
     except:
